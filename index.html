@@ -10,6 +10,14 @@
 <meta property="og:description" content="Authentic Indian & Mexican in Villamartin Plaza. Free delivery in Orihuela Costa. Open daily 4PM-11:30PM. Rated 4.6 on Google.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=1200&q=70">
+<!-- Google tag (gtag.js) - Google Analytics 4, property "The Dining Room" -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G65PSMBLQ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-G65PSMBLQ7');
+</script>
 <link rel="canonical" href="https://asjadfar.github.io/the-dining-room-website/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:url" content="https://asjadfar.github.io/the-dining-room-website/">
@@ -527,6 +535,16 @@ function sendBooking(e) {
   window.open('https://wa.me/34641900845?text=' + encodeURIComponent(msg), '_blank');
   return false;
 }
+</script>
+<script>
+// Click tracking for Google Analytics (GA4) — fires only once the GA tag is installed.
+// WhatsApp clicks, phone calls, booking submits, menu views.
+function trackEvent(name, params) { if (typeof gtag === 'function') { gtag('event', name, params || {}); } }
+document.querySelectorAll('a[href*="wa.me"]').forEach(function(a){ a.addEventListener('click', function(){ trackEvent('whatsapp_click', {link_url: a.href}); }); });
+document.querySelectorAll('a[href^="tel:"]').forEach(function(a){ a.addEventListener('click', function(){ trackEvent('phone_click', {link_url: a.href}); }); });
+document.querySelectorAll('a[href="#menu"], a[href="#book"]').forEach(function(a){ a.addEventListener('click', function(){ trackEvent('menu_or_booking_click', {link_text: a.textContent.trim()}); }); });
+var _sendBooking = window.sendBooking;
+window.sendBooking = function(e) { trackEvent('booking_submit', {}); return _sendBooking(e); };
 </script>
 </body>
 </html>
